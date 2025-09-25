@@ -59,9 +59,9 @@ while running:
     handle_events()
     frame = (frame + 1) % 8
     if (x < 1250 and dir_x > 0) or (x > 30 and dir_x < 0):
-        x += dir_x * 5
+        x += dir_x * 15
     if (y < 1024 and dir_y > 0) or (y > 0 and dir_y < 0):
-        y += dir_y * 5
+        y += dir_y * 15
     delay(0.05)
 
 close_canvas()
