@@ -10,6 +10,13 @@ running = True
 frame = 0
 
 while running:
+    clear_canvas()
+
+    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
+
+    update_canvas()
+    frame = (frame + 1) % 8
+    delay(0.05)
     pass
 
 close_canvas()
