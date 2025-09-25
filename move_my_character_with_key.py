@@ -20,10 +20,8 @@ def handle_events():
                 z = 0
             elif event.key == SDLK_UP:
                 dir_y += 1
-                z = 1
             elif event.key == SDLK_DOWN:
                 dir_y -= 1
-                z = 0
             elif event.type == SDLK_ESCAPE:
                 running = False
         elif event.type == SDL_KEYUP:
@@ -35,10 +33,8 @@ def handle_events():
                 z = 2
             if event.key == SDLK_UP:
                 dir_y -= 1
-                z = 3
             elif event.key == SDLK_DOWN:
                 dir_y += 1
-                z = 2
 
 running = True
 frame = 0
