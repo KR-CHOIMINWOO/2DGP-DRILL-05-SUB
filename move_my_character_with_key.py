@@ -12,21 +12,25 @@ keys_pressed = {
     SDLK_DOWN: False
 }
 
+last_dir = 3
+
 def update_direction():
-    global z
+    global z, last_dir
     if keys_pressed[SDLK_RIGHT]:
         z = 1
+        last_dir = 1
     elif keys_pressed[SDLK_LEFT]:
         z = 0
+        last_dir = 0
     elif keys_pressed[SDLK_UP]:
-        z = 1
+        z = last_dir
     elif keys_pressed[SDLK_DOWN]:
-        z = 0
+        z = last_dir
     else:
-        if dir_x > 0 or dir_y > 0:
-            z = 3
-        elif dir_x < 0 or dir_y < 0:
+        if last_dir == 0:
             z = 2
+        elif last_dir == 1:
+            z = 3
 
 def handle_events():
     global running , dir_x, dir_y
@@ -80,6 +84,7 @@ while running:
 
     update_canvas()
     handle_events()
+    update_direction
     frame = (frame + 1) % 8
     if (x < 1250 and dir_x > 0) or (x > 30 and dir_x < 0):
         x += dir_x * 15
