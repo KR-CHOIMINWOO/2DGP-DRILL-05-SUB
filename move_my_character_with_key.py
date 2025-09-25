@@ -8,12 +8,18 @@ tuk_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
 
 def handle_events():
-    global running , x, y, z
+    global running , dir_x, dir_y, z
+    events = get_events()
 
     pass
 
 running = True
 frame = 0
+x = 1280 // 2
+y = 1024 // 2
+z = 0
+dir_x = 0
+dir_y = 0
 
 while running:
     clear_canvas()
