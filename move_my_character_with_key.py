@@ -14,6 +14,19 @@ keys_pressed = {
 
 def update_direction():
     global z
+    if keys_pressed[SDLK_RIGHT]:
+        z = 1
+    elif keys_pressed[SDLK_LEFT]:
+        z = 0
+    elif keys_pressed[SDLK_UP]:
+        z = 1
+    elif keys_pressed[SDLK_DOWN]:
+        z = 0
+    else:
+        if dir_x > 0 or dir_y > 0:
+            z = 3
+        elif dir_x < 0 or dir_y < 0:
+            z = 2
 
 def handle_events():
     global running , dir_x, dir_y
@@ -33,7 +46,7 @@ def handle_events():
                 keys_pressed[SDLK_UP] = True
             elif event.key == SDLK_DOWN:
                 dir_y -= 1
-                keys_pressed[SDLK_UP] = True
+                keys_pressed[SDLK_DOWN] = True
             elif event.type == SDLK_ESCAPE:
                 running = False
         elif event.type == SDL_KEYUP:
@@ -49,6 +62,7 @@ def handle_events():
             elif event.key == SDLK_DOWN:
                 dir_y += 1
                 keys_pressed[SDLK_DOWN] = False
+        update_direction()
 
 running = True
 frame = 0
