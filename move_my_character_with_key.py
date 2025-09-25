@@ -40,7 +40,6 @@ def handle_events():
                 dir_y += 1
                 z = 2
 
-
 running = True
 frame = 0
 x = 1280 // 2
