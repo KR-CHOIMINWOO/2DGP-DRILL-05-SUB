@@ -84,7 +84,7 @@ while running:
 
     update_canvas()
     handle_events()
-    update_direction
+    update_direction()
     frame = (frame + 1) % 8
     if (x < 1250 and dir_x > 0) or (x > 30 and dir_x < 0):
         x += dir_x * 15
