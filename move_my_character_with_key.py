@@ -24,26 +24,31 @@ def handle_events():
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:
                 dir_x += 1
+                keys_pressed[SDLK_RIGHT] = True
             elif event.key == SDLK_LEFT:
                 dir_x -= 1
-                z = 0
+                keys_pressed[SDLK_LEFT] = True
             elif event.key == SDLK_UP:
                 dir_y += 1
+                keys_pressed[SDLK_UP] = True
             elif event.key == SDLK_DOWN:
                 dir_y -= 1
+                keys_pressed[SDLK_UP] = True
             elif event.type == SDLK_ESCAPE:
                 running = False
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
                 dir_x -= 1
-                z = 3
+                keys_pressed[SDLK_RIGHT] = False
             elif event.key == SDLK_LEFT:
                 dir_x += 1
-                z = 2
+                keys_pressed[SDLK_LEFT] = False
             if event.key == SDLK_UP:
                 dir_y -= 1
+                keys_pressed[SDLK_UP] = False
             elif event.key == SDLK_DOWN:
                 dir_y += 1
+                keys_pressed[SDLK_DOWN] = False
 
 running = True
 frame = 0
