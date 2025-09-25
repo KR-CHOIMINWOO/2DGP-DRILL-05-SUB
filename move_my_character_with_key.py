@@ -58,8 +58,10 @@ while running:
     update_canvas()
     handle_events()
     frame = (frame + 1) % 8
-    x += dir_x * 5
-    y += dir_y * 5
+    if x < 1250 and x > 30:
+        x += dir_x * 5
+    if y <= 1024 and y >= 0:
+        y += dir_y * 5
     delay(0.05)
 
 close_canvas()
