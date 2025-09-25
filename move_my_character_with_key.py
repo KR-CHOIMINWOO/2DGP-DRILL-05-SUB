@@ -1,7 +1,5 @@
 from pico2d import *
 
-from move_character_with_mouse import handle_events
-
 TUK_WIDTH, TUK_HEIGHT = 1280, 1024
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
@@ -10,8 +8,38 @@ character = load_image('animation_sheet.png')
 def handle_events():
     global running , dir_x, dir_y, z
     events = get_events()
+    for event in events:
+        if event.type == SDL_QUIT:
+            running = False
+        elif event.type == SDL_KEYDOWN:
+            if event.key == SDLK_RIGHT:
+                dir_x += 1
+                z = 1
+            elif event.key == SDLK_LEFT:
+                dir_x -= 1
+                z = 0
+            elif event.key == SDLK_UP:
+                dir_y += 1
+                z = 1
+            elif event.key == SDLK_DOWN:
+                dir_y -= 1
+                z = 0
+            elif event.type == SDLK_ESCAPE:
+                running = False
+        elif event.type == SDL_KEYUP:
+            if event.key == SDLK_RIGHT:
+                dir_x -= 1
+                z = 3
+            elif event.key == SDLK_LEFT:
+                dir_x += 1
+                z = 2
+            if event.key == SDLK_UP:
+                dir_y -= 1
+                z = 3
+            elif event.key == SDLK_DOWN:
+                dir_y += 1
+                z = 2
 
-    pass
 
 running = True
 frame = 0
@@ -30,7 +58,8 @@ while running:
     update_canvas()
     handle_events()
     frame = (frame + 1) % 8
+    x += dir_x * 5
+    y += dir_y * 5
     delay(0.05)
-    pass
 
 close_canvas()
