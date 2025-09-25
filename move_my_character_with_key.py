@@ -5,6 +5,13 @@ open_canvas(TUK_WIDTH, TUK_HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
 
+keys_pressed = {
+    SDLK_RIGHT: False,
+    SDLK_LEFT: False,
+    SDLK_UP: False,
+    SDLK_DOWN: False
+}
+
 def update_direction():
     global z
 
@@ -17,7 +24,6 @@ def handle_events():
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:
                 dir_x += 1
-                z = 1
             elif event.key == SDLK_LEFT:
                 dir_x -= 1
                 z = 0
